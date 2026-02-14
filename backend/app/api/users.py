@@ -1,10 +1,11 @@
 """
-用户路由
+用户路由（增加输入验证）
 """
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
+from pydantic import validator, EmailStr
 from app.database import get_db
 from app.core.security import get_current_user, get_password_hash
 from app.models.user import User
@@ -17,9 +18,7 @@ router = APIRouter()
 async def get_current_user_info(
     current_user: User = Depends(get_current_user)
 ):
-    """
-    获取当前用户信息
-    """
+    """获取当前用户信息"""
     return current_user
 
 
@@ -29,14 +28,30 @@ async def update_current_user(
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db)
 ):
-    """
-    更新当前用户信息
-    """
-    # 更新用户信息
+    """更新当前用户信息"""
+    # 输入验证
     if user_update.username:
+        # 用户名长度验证
+        if len(user_update.username) < 3 or len(user_update.username) > 50:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Username must be between 3 and 50 characters"
+            )
+        # 用户名字符验证
+        if not user_update.username.replace('_', '').replace('-', '').isalnum():
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Username can only contain letters, numbers, hyphens, and underscores"
+            )
         current_user.username = user_update.username
 
     if user_update.settings:
+        # settings必须是字典
+        if not isinstance(user_update.settings, dict):
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Settings must be a valid JSON object"
+            )
         current_user.settings = user_update.settings
 
     await db.commit()
@@ -51,9 +66,14 @@ async def get_user(
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db)
 ):
-    """
-    获取用户信息（仅管理员或自己）
-    """
+    """获取用户信息（仅管理员或自己）"""
+    # 输入验证：user_id格式
+    if not user_id or len(user_id) > 100:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid user ID format"
+        )
+    
     # 权限检查
     if current_user.id != user_id and current_user.role != "admin":
         raise HTTPException(

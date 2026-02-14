@@ -1,59 +1,45 @@
 """
-配置管理模块
-
-使用pydantic-settings从环境变量加载配置
+配置管理（使用环境变量）
 """
-from typing import Optional
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings
+from typing import List
+import os
 
 
 class Settings(BaseSettings):
-    """
-    应用配置类
-    
-    从环境变量加载配置，支持.env文件
-    """
-    model_config = SettingsConfigDict(
-        env_file=".env",
-        env_file_encoding="utf-8",
-        case_sensitive=False
-    )
-    
-    # 应用基础配置
-    APP_NAME: str = "OpenCode Web Platform"
-    APP_VERSION: str = "0.1.0"
-    DEBUG: bool = False
-    BASE_DIR: str = "/tmp"  # 基础目录，用于文件存储等
-    
-    # API配置
-    API_V1_PREFIX: str = "/api/v1"
+    # 应用配置
+    APP_NAME: str = "OpenCode Platform"
+    APP_VERSION: str = "1.0.0"
+    DEBUG: bool = True
     
     # 数据库配置
-    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/opencode"
+    DATABASE_URL: str = "postgresql+asyncpg://opencode:opencode123@localhost:5432/opencode"
     
     # Redis配置
     REDIS_URL: str = "redis://localhost:6379/0"
     
-    # JWT配置
-    SECRET_KEY: str = "your-secret-key-change-this-in-production"
+    # JWT配置（必须通过环境变量设置）
+    SECRET_KEY: str = os.getenv("SECRET_KEY", "")  # 不提供默认值，强制从环境变量读取
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
-    REFRESH_TOKEN_EXPIRE_DAYS: int = 7
-    
-    # OpenCode CLI配置
-    OPENCODE_CLI_PATH: str = "opencode"
-    OPENCODE_TIMEOUT: int = 300  # 5分钟超时
     
     # CORS配置
-    CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:8080"]
+    CORS_ORIGINS: List[str] = ["http://localhost:3000"]
     
-    # API限流配置
-    RATE_LIMIT_PER_MINUTE: int = 60
-    
-    # WebSocket配置
-    WS_HEARTBEAT_INTERVAL: int = 30
-    WS_MAX_CONNECTIONS: int = 1000
+    # opencode配置
+    OPENCODE_CLI_PATH: str = "opencode"
+    BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    class Config:
+        env_file = ".env"
+        case_sensitive = True
 
 
-# 全局配置实例
 settings = Settings()
+
+# 验证SECRET_KEY
+if not settings.SECRET_KEY:
+    raise ValueError(
+        "SECRET_KEY must be set in environment variables. "
+        "Generate one with: openssl rand -hex 32"
+    )
