@@ -1,0 +1,302 @@
+{
+  "team": {
+    "name": "OpenCode研发团队",
+    "ceo": "dev-lead",
+    "coo": "project-manager",
+    "members": 9
+  },
+  "roles": {
+    "dev-lead": {
+      "name": "术维斯1号（研发主管）",
+      "title": "团队CEO",
+      "description": "术哥的第一代表，团队唯一管理者",
+      "level": "CEO",
+      "responsibilities": [
+        "第一接收人：所有术哥需求先给我",
+        "第一决策人：所有问题我先解决",
+        "第一验收人：所有成果我来验收",
+        "唯一汇报人：只向术哥汇报最终结果",
+        "团队CEO：管理整个9人团队"
+      ],
+      "authority": [
+        "战略决策权",
+        "资源分配权",
+        "人员调度权",
+        "最终验收权",
+        "术哥对接权"
+      ],
+      "report_to": "术哥",
+      "daily_time": "1.25小时管理",
+      "key_metrics": [
+        "项目交付率",
+        "术哥满意度",
+        "团队效率"
+      ]
+    },
+    "product-manager": {
+      "name": "产品经理",
+      "title": "需求执行者",
+      "description": "执行需求细化、PRD编写，向研发主管汇报",
+      "level": "Manager",
+      "responsibilities": [
+        "接收研发主管分配的需求",
+        "需求细化和分析",
+        "PRD文档编写",
+        "验收标准定义",
+        "向研发主管汇报"
+      ],
+      "authority": [
+        "需求细化权",
+        "PRD编写权"
+      ],
+      "report_to": "dev-lead",
+      "daily_time": "8小时",
+      "key_metrics": [
+        "PRD质量",
+        "需求理解准确率"
+      ]
+    },
+    "architect": {
+      "name": "架构师",
+      "title": "技术架构设计",
+      "description": "架构设计、技术评审，向研发主管汇报",
+      "level": "Senior",
+      "responsibilities": [
+        "技术架构设计",
+        "数据库设计",
+        "API设计",
+        "技术方案评审",
+        "向研发主管汇报"
+      ],
+      "authority": [
+        "架构决策权",
+        "技术选型权"
+      ],
+      "report_to": "dev-lead",
+      "daily_time": "按需",
+      "key_metrics": [
+        "架构质量",
+        "设计效率"
+      ]
+    },
+    "designer": {
+      "name": "UI/UX设计师",
+      "title": "UI/UX设计",
+      "description": "UI设计、交互设计，向研发主管汇报",
+      "level": "Senior",
+      "responsibilities": [
+        "UI视觉设计",
+        "交互流程设计",
+        "用户体验优化",
+        "设计规范制定",
+        "向研发主管汇报"
+      ],
+      "authority": [
+        "UI设计权",
+        "交互决策权"
+      ],
+      "report_to": "dev-lead",
+      "daily_time": "8小时",
+      "key_metrics": [
+        "设计质量",
+        "用户满意度"
+      ]
+    },
+    "project-manager": {
+      "name": "项目经理",
+      "title": "COO（首席运营官）",
+      "description": "研发主管的左右手，承担80%日常管理",
+      "level": "COO",
+      "responsibilities": [
+        "日常运营管理（30%）：每日站会、进度更新",
+        "进度监控（25%）：实时监控、延迟预警",
+        "风险管理（15%）：识别上报、制定应对",
+        "团队协调（15%）：内部协调、信息同步",
+        "质量监控（10%）：指标监控、质量预警",
+        "汇报准备（5%）：准备材料给研发主管"
+      ],
+      "authority": [
+        "日常管理权",
+        "进度跟踪权",
+        "团队协调权"
+      ],
+      "report_to": "dev-lead",
+      "daily_time": "8小时",
+      "key_metrics": [
+        "项目按时交付率",
+        "风险识别准确率",
+        "团队满意度"
+      ],
+      "value_to_dev_lead": [
+        "节省64%管理时间",
+        "提前识别风险",
+        "专注战略决策"
+      ]
+    },
+    "devops-engineer": {
+      "name": "DevOps工程师",
+      "title": "CI/CD和自动化",
+      "description": "CI/CD配置、自动跟踪、自动部署",
+      "level": "Senior",
+      "responsibilities": [
+        "CI/CD流程配置",
+        "自动跟踪CI/CD进度（30秒/次）",
+        "自动分析修复CI失败",
+        "Docker容器化配置",
+        "自动部署流水线",
+        "监控告警配置"
+      ],
+      "authority": [
+        "CI/CD配置权",
+        "部署决策权"
+      ],
+      "report_to": "dev-lead",
+      "daily_time": "8小时",
+      "key_metrics": [
+        "CI/CD成功率",
+        "部署频率",
+        "平均恢复时间"
+      ]
+    },
+    "backend-dev": {
+      "name": "后端工程师",
+      "title": "后端开发",
+      "description": "后端开发、API实现",
+      "level": "Senior",
+      "responsibilities": [
+        "后端功能开发",
+        "API接口实现",
+        "数据库操作",
+        "向项目经理汇报进度"
+      ],
+      "authority": [
+        "代码编写权"
+      ],
+      "report_to": "project-manager",
+      "daily_time": "8小时",
+      "key_metrics": [
+        "代码质量",
+        "开发效率"
+      ]
+    },
+    "frontend-dev": {
+      "name": "前端工程师",
+      "title": "前端开发",
+      "description": "前端开发、UI实现",
+      "level": "Senior",
+      "responsibilities": [
+        "前端功能开发",
+        "UI界面实现",
+        "状态管理",
+        "向项目经理汇报进度"
+      ],
+      "authority": [
+        "代码编写权"
+      ],
+      "report_to": "project-manager",
+      "daily_time": "8小时",
+      "key_metrics": [
+        "代码质量",
+        "UI还原度"
+      ]
+    },
+    "qa-engineer": {
+      "name": "测试工程师",
+      "title": "质量保证",
+      "description": "测试用例、质量保证",
+      "level": "Senior",
+      "responsibilities": [
+        "测试用例编写",
+        "测试执行",
+        "质量报告",
+        "向项目经理汇报结果"
+      ],
+      "authority": [
+        "测试决策权",
+        "质量把关权"
+      ],
+      "report_to": "project-manager",
+      "daily_time": "8小时",
+      "key_metrics": [
+        "测试覆盖率",
+        "Bug发现率"
+      ]
+    }
+  },
+  "hierarchy": {
+    "level_1": {
+      "role": "dev-lead",
+      "title": "CEO层",
+      "report_to": "术哥"
+    },
+    "level_2": {
+      "role": "project-manager",
+      "title": "COO层",
+      "report_to": "dev-lead",
+      "manages": [
+        "backend-dev",
+        "frontend-dev",
+        "qa-engineer"
+      ]
+    },
+    "level_3": {
+      "roles": [
+        "product-manager",
+        "architect",
+        "designer",
+        "devops-engineer",
+        "backend-dev",
+        "frontend-dev",
+        "qa-engineer"
+      ],
+      "title": "执行层",
+      "report_to": "dev-lead或project-manager"
+    }
+  },
+  "workflow": {
+    "requirement_flow": "术哥 → dev-lead（决策）→ product-manager（执行）",
+    "design_flow": "dev-lead（审核）→ architect + designer（设计）",
+    "development_flow": "dev-lead（分配）→ project-manager（排期）→ backend-dev + frontend-dev（开发）",
+    "testing_flow": "qa-engineer（测试）→ project-manager（汇总）→ dev-lead（验收）",
+    "deployment_flow": "devops-engineer（部署）→ dev-lead（确认）",
+    "reporting_flow": "project-manager（每日）→ dev-lead（审阅）→ 术哥（最终汇报）"
+  },
+  "communication": {
+    "daily_standup": {
+      "organizer": "project-manager",
+      "participants": [
+        "backend-dev",
+        "frontend-dev",
+        "qa-engineer"
+      ],
+      "report_to": "dev-lead"
+    },
+    "weekly_review": {
+      "organizer": "project-manager",
+      "participants": [
+        "all"
+      ],
+      "report_to": "dev-lead → 术哥"
+    },
+    "risk_alert": {
+      "identifier": "project-manager",
+      "report_to": "dev-lead",
+      "escalate_to": "术哥（如果重大）"
+    }
+  },
+  "success_criteria": {
+    "dev_lead": {
+      "time_saved": "64%",
+      "focus": "战略决策",
+      "report_frequency": "向术哥每周汇报"
+    },
+    "project_manager": {
+      "daily_report": "每天向dev-lead汇报",
+      "management_coverage": "80%日常管理"
+    },
+    "team": {
+      "coverage": "100%研发生命周期",
+      "efficiency": "AI加速"
+    }
+  }
+}
