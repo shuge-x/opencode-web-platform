@@ -82,20 +82,20 @@
     "designer": {
       "name": "UI/UX设计师",
       "title": "UI/UX设计",
-      "description": "UI设计、交互设计，向研发主管汇报",
+      "description": "UI设计、交互设计，向项目经理汇报",
       "level": "Senior",
       "responsibilities": [
         "UI视觉设计",
         "交互流程设计",
         "用户体验优化",
         "设计规范制定",
-        "向研发主管汇报"
+        "向项目经理汇报"
       ],
       "authority": [
         "UI设计权",
         "交互决策权"
       ],
-      "report_to": "dev-lead",
+      "report_to": "project-manager",
       "daily_time": "8小时",
       "key_metrics": [
         "设计质量",
@@ -136,7 +136,7 @@
     "devops-engineer": {
       "name": "DevOps工程师",
       "title": "CI/CD和自动化",
-      "description": "CI/CD配置、自动跟踪、自动部署",
+      "description": "CI/CD配置、自动跟踪、自动部署，向项目经理汇报",
       "level": "Senior",
       "responsibilities": [
         "CI/CD流程配置",
@@ -144,13 +144,14 @@
         "自动分析修复CI失败",
         "Docker容器化配置",
         "自动部署流水线",
-        "监控告警配置"
+        "监控告警配置",
+        "向项目经理汇报"
       ],
       "authority": [
         "CI/CD配置权",
         "部署决策权"
       ],
-      "report_to": "dev-lead",
+      "report_to": "project-manager",
       "daily_time": "8小时",
       "key_metrics": [
         "CI/CD成功率",
@@ -236,21 +237,29 @@
       "manages": [
         "backend-dev",
         "frontend-dev",
-        "qa-engineer"
+        "qa-engineer",
+        "designer",
+        "devops-engineer"
       ]
     },
     "level_3": {
       "roles": [
         "product-manager",
-        "architect",
+        "architect"
+      ],
+      "title": "战略执行层",
+      "report_to": "dev-lead"
+    },
+    "level_4": {
+      "roles": [
         "designer",
         "devops-engineer",
         "backend-dev",
         "frontend-dev",
         "qa-engineer"
       ],
-      "title": "执行层",
-      "report_to": "dev-lead或project-manager"
+      "title": "日常执行层",
+      "report_to": "project-manager"
     }
   },
   "workflow": {
